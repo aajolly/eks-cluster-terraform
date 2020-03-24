@@ -1,0 +1,44 @@
+cd ~
+
+echo "--------Updating all packages--------"
+sudo yum update -y
+
+echo "--------Downloading Tools--------"
+sudo yum install wget unzip jq -y
+
+echo "--------Downloading kubectl--------"
+curl -o kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.15.10/2020-02-22/bin/linux/amd64/kubectl
+
+echo "--------Setting up kubectl--------"
+chmod +x ./kubectl
+mkdir -p $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$PATH:$HOME/bin
+echo 'export PATH=$PATH:$HOME/bin' >> ~/.bashrc
+
+echo "--------Downloading aws-iam-authenticator--------"
+curl -o aws-iam-authenticator https://amazon-eks.s3.us-west-2.amazonaws.com/1.15.10/2020-02-22/bin/linux/amd64/aws-iam-authenticator
+
+echo "--------Setting up aws-iam-authenticator--------"
+chmod +x ./aws-iam-authenticator
+cp ./aws-iam-authenticator $HOME/bin/aws-iam-authenticator
+
+echo "--------Downloading Terraform--------"
+wget https://releases.hashicorp.com/terraform/0.12.23/terraform_0.12.23_linux_amd64.zip
+
+echo "--------Setting up Terraform--------"
+sudo unzip ./terraform_0.12.23_linux_amd64.zip -d /usr/local/bin/
+
+echo "--------Removing unneeded docker images--------"
+docker images -q | xargs docker rmi || true
+
+echo "--------Upgrading AWS CLI--------"
+pip3 install awscli --upgrade --user
+
+echo "--------Verification--------"
+echo "kubectl"
+kubectl version --short --client
+
+echo "terraform"
+terraform version
+
+echo "aws-iam-authenticator"
+aws-iam-authenticator version
