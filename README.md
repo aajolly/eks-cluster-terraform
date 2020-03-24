@@ -20,3 +20,7 @@ Repository for Creating EKS Cluster with Managed Nodes using Terraform
     ```sh
     terraform apply -auto-approve
     ```
+  - Clean-up
+    ```sh
+    terraform destroy -auto-approve
+    ```
