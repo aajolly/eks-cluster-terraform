@@ -32,6 +32,7 @@ docker images -q | xargs docker rmi || true
 
 echo "--------Upgrading AWS CLI--------"
 pip3 install awscli --upgrade --user
+export PATH=$HOME/.local/bin:$PATH
 
 echo "--------Verification--------"
 echo "kubectl"
