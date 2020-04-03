@@ -12,7 +12,7 @@ This readme provides two options to get started.
 3. IAM role for Cloud9 IDE
 4. Assign IAM Instance Profile to Cloud9 IDE
 
-| Region | Launch Template |
+| Region | Launch Template :rocket |
 | ------------ | ------------- | 
 **Oregon** (us-west-2) | [![Launch Stack into Oregon with CloudFormation](/images/deploy-to-aws.png)](https://console.aws.amazon.com/cloudformation/home?region=us-west-2#/stacks/new?stackName=container-labs&templateURL=https://s3-ap-southeast-2.amazonaws.com/aajolly-labs/c9stack.yaml)  
 **N.Virginia** (us-east-1) | [![Launch Stack into N.Virginia with CloudFormation](/images/deploy-to-aws.png)](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=container-labs&templateURL=https://s3-ap-southeast-2.amazonaws.com/aajolly-labs/c9stack.yaml)  
@@ -34,9 +34,7 @@ This readme provides two options to get started.
 
 ### Update IAM settings for your Workspace
 
-{{% notice info %}}
-AWS Cloud9 normally manages IAM credentials dynamically. This however causes issues when trying to create IAM entities, hence we'll be disabling this option and assigning an IAM role which has been pre-provisioned.
-{{% /notice %}}
+> AWS Cloud9 normally manages IAM credentials dynamically. This however causes issues when trying to create IAM entities, hence we'll be disabling this option and assigning an IAM role which has been pre-provisioned.
 
 - From within your workspace, click the sprocket, or launch a new tab to open the Preferences tab
 - Select **AWS SETTINGS**
