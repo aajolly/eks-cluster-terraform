@@ -63,12 +63,12 @@ source ~/.bash_profile
 
 To ensure temporary credentials aren't already in place remove
 any existing credentials file:
-```
+```bash
 rm -vf ${HOME}/.aws/credentials
 ```
 
 Configure our aws cli with our current region as default:
-```
+```bash
 export ACCOUNT_ID=$(aws sts get-caller-identity --output text --query Account)
 export AWS_REGION=$(curl -s 169.254.169.254/latest/dynamic/instance-identity/document | jq -r '.region')
 
@@ -82,13 +82,12 @@ aws configure get default.region
 
 Use the [GetCallerIdentity](https://docs.aws.amazon.com/cli/latest/reference/sts/get-caller-identity.html) CLI command to validate that the Cloud9 IDE is using the correct IAM role.
 
-```
+```bash
 aws sts get-caller-identity
-
 ```
 
 The output assumed-role name should contain:
-```
+```bash
 C9Role
 ```
 
@@ -96,7 +95,7 @@ C9Role
 
 If the _Arn_ contains the role name from above and an Instance ID, you may proceed.
 
-```output
+```bash
 {
     "Account": "123456789", 
     "UserId": "AROASZJSJAGFMMAJLP52A:MasterKey", 
@@ -107,7 +106,7 @@ If the _Arn_ contains the role name from above and an Instance ID, you may proce
 
 A git repository with terraform code has already been provisioned as part of Cloud9.
 
-```sh
+```terraform
 cd terraform
 terraform init
 terraform validate
@@ -120,7 +119,7 @@ The terraform stack will take ~15 minutes to provision the resources.
 ### Configuring kubectl for EKS (Optional)
 If you intend to use kubectl to manage the cluster, please follow the procedure below to configure kubectl to work with EKS. Run the below command
 
-```sh
+```bash
 aws eks update-kubeconfig --name "EKS-LAB"
 ```
 
@@ -134,22 +133,22 @@ aws eks update-kubeconfig --name "EKS-LAB"
   - Clone this repository
   - Change directory to terraform
   - Initialize terraform
-    ```sh
+    ```terraform
     terraform init
     ```
   - Validate terraform
-    ```sh
+    ```terraform
     terraform validate
     ```
   - Check the execution plan
-    ```sh
+    ```terraform
     terraform plan
     ```
   - Deploy
-    ```sh
+    ```terraform
     terraform apply -auto-approve
     ```
   - Clean-up
-    ```sh
+    ```terraform
     terraform destroy -auto-approve
     ```
