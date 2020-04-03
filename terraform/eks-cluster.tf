@@ -87,5 +87,5 @@ resource "aws_eks_cluster" "eksLab-Cluster" {
 resource "aws_iam_openid_connect_provider" "eks-oidc-provider" {
   client_id_list  = ["sts.amazonaws.com"]
   thumbprint_list = []
-  url             = "${aws_eks_cluster.${var.cluster_name}.identity.0.oidc.0.issuer}"
+  url             = "${aws_eks_cluster.eksLab-Cluster.identity.0.oidc.0.issuer}"
 }
