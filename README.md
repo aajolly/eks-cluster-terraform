@@ -4,6 +4,20 @@ Repository for Creating EKS Cluster with Managed Nodes using Terraform
 
 This readme provides two options to get started.
 
+**What does this terraform template build?**
+- VPC with 10.0.0.0/16 CIDR Block
+- 3 x Public Subnets with necessary tags
+- 3 x Private Subnets with necessary tags
+- 3 x Elastic IP
+- 3 x NAT Gateway
+- 1 x Internet Gateway
+- Route Tables for public & private subnets
+- Security Groups for communication between worker nodes and cluster
+- IAM Policy & Role for Worker nodes
+- Managed Worker node group
+- EKS Cluster with logging enabled
+- IAM Provider with EKS OIDC Issuer
+
 ## Using Cloud9 as a terraform host
 
 Based on your region, click the **Deploy to AWS** icon to deploy a cloudformation stack which provisions the following:
