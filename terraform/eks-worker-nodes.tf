@@ -1,7 +1,7 @@
 #
 # EKS Worker Nodes Resources
 #  * IAM role allowing Kubernetes actions to access other AWS services
-#  * EKS Node Group to launch worker nodes
+#  * EKS Manager Worker Nodes
 #
 
 resource "aws_security_group" "eks-worker-node-sg" {

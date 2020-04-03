@@ -1,9 +1,13 @@
 #
 # VPC Resources
 #  * VPC
-#  * Subnets
+#  * Public Subnets - 10.0.[0-2].0/24
+#  * Private Subnets - 10.0.10[0-2].0/24
 #  * Internet Gateway
-#  * Route Table
+#  * Elastic IPs
+#  * NAT Gateways
+#  * Route Tables
+#  * Route Table Association
 #
 
 resource "aws_vpc" "eks-vpc" {

@@ -3,7 +3,8 @@
 #  * IAM Role to allow EKS service to manage other AWS services
 #  * EC2 Security Group to allow networking traffic with EKS cluster
 #  * EKS Cluster
-#
+#  * EKS Cluster Logging
+#  * IAM OIDC Provider
 
 resource "aws_iam_role" "eksServiceRole" {
   name = "eksServiceRole"
@@ -87,5 +88,5 @@ resource "aws_eks_cluster" "eksLab-Cluster" {
 resource "aws_iam_openid_connect_provider" "eks-oidc-provider" {
   client_id_list  = ["sts.amazonaws.com"]
   thumbprint_list = []
-  url             = "${aws_eks_cluster.eksLab-Cluster.identity.0.oidc.0.issuer}"
+  url             = aws_eks_cluster.eksLab-Cluster.identity.0.oidc.0.issuer
 }

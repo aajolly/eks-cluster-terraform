@@ -6,11 +6,11 @@ This readme provides two options to get started.
 
 ## Using Cloud9 as a terraform host
 
-### Based on your region, click the **Deploy to AWS** icon to deploy a cloudformation stack which provisions the following:
+Based on your region, click the **Deploy to AWS** icon to deploy a cloudformation stack which provisions the following:
 1. Cloud9 Instance
 2. Pulls this repository automatically
 3. IAM role for Cloud9 IDE
-4. Assign IAM Instance Profile to Cloud9 IDE
+4. CodeBuild Project to assign IAM Instance Profile to Cloud9 IDE
 
 | Region | Launch Template |
 | ------------ | ------------- | 
@@ -56,10 +56,9 @@ Make sure to reload bash profile
 ```bash 
 source ~/.bash_profile
 ```
-{{% notice info %}}
-Make sure aws-cli version if 1.18+. If it is less than that, issue the command export PATH=$HOME/.local/bin:$PATH
-It should now be 1.18+
-{{% /notice %}}
+
+> Make sure aws-cli version if 1.18+. If it is less than that, issue the command export PATH=$HOME/.local/bin:$PATH
+> It should now be 1.18+
 
 
 To ensure temporary credentials aren't already in place remove
@@ -118,8 +117,8 @@ terraform apply -auto-approve
 
 The terraform stack will take ~15 minutes to provision the resources.
 
-### Configuring kubectl for EKS
-Since we'll be using kubectl extensively, please follow the procedure below to configure kubectl to work with EKS. Run the below command
+### Configuring kubectl for EKS (Optional)
+If you intend to use kubectl to manage the cluster, please follow the procedure below to configure kubectl to work with EKS. Run the below command
 
 ```sh
 aws eks update-kubeconfig --name "EKS-LAB"
@@ -129,9 +128,12 @@ aws eks update-kubeconfig --name "EKS-LAB"
 ## Already have a terraform host
 
 - Steps to perform
+
+  > Make sure environment variables for region are set else terraform validate command will fail and terraform plan, terraform apply commands will ask you to specify a region.
+
   - Clone this repository
   - Change directory to terraform
-  - Initialize terraform using
+  - Initialize terraform
     ```sh
     terraform init
     ```
